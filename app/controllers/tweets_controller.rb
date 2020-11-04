@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
-  before_action :move_to_index,{only: [:edit,:update,:destroy]}
   
   def index
+    @tweets = Tweet.all
   end
 
   def new
@@ -17,8 +17,12 @@ class TweetsController < ApplicationController
     end
   end
 
+private
+
   def tweet_params
-    params.require(:tweet).permit(:prefectre_id, :city, :court, :datetime, :level_id, :detail, :recruitment, :title, :image).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:toprank_id, :jgrank_id, :midrank_id, :suprank_id, :botrank_id, :detail, :teamname, :starttime, :endtime, :weekday_id).merge(user_id: current_user.id)
   end
 
 end
+
+

@@ -9,19 +9,29 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :Password（同じパスワードをもう一度入力してくだい） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.password_field :nickname, autocomplete: "nickname" %>
+    <%= f.label :Summonername %><br />
+    <%= f.text_field :nickname, autocomplete: "nickname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Position %><br />
+    <%= f.collection_select(:position_id, Position.all, :id, :name, {include_blank: "---"}, {class:"select-box"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Rank %><br />
+    <%= f.collection_select(:rank_id, Rank.all, :id, :name, {include_blank: "---"}, {class:"select-box"}) %>
   </div>
 
   <div class="actions">
