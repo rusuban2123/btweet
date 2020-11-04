@@ -1,15 +1,18 @@
 class CreateTweets < ActiveRecord::Migration[6.0]
   def change
     create_table :tweets do |t|
-      t.integer    :prefectre_id,   null: false
-      t.integer    :level_id,       null: false
-      t.text       :detail,         null: false
-      t.references :user,           null: false, foreign_key: true
-      t.string     :title,          null: false
-      t.string     :city,           null: false
-      t.string     :court,          null: false
-      t.string     :recruitment,    null: false
-      t.datetime   :datetime,       null: false
+      t.integer    :toprank_id,       null: false
+      t.integer    :jgrank_id,        null: false
+      t.integer    :midrank_id,       null: false
+      t.integer    :suprank_id,       null: false
+      t.integer    :botrank_id,       null: false
+      t.text       :detail,            null: false
+      t.string     :teamname,           null: false
+      t.references :user,              null: false, foreign_key: true
+      t.integer    :weekday_id,        null: false
+      t.time       :starttime,         null: false
+      t.time       :endtime,           null: false
+
       t.timestamps
     end
   end

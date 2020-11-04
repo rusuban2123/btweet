@@ -13,8 +13,12 @@ class TweetsController < ApplicationController
     if @tweet.save
      redirect_to user_session_path
     else
-     redirect_to new_prototype_path
+     render 'new'
     end
+  end
+
+  def tweet_params
+    params.require(:tweet).permit(:prefectre_id, :city, :court, :datetime, :level_id, :detail, :recruitment, :title, :image).merge(user_id: current_user.id)
   end
 
 end

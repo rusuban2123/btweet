@@ -10,18 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_194504) do
+ActiveRecord::Schema.define(version: 2020_11_03_215928) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefectre_id", null: false
-    t.integer "level_id", null: false
+    t.integer "toprank_id", null: false
+    t.integer "jgrank_id", null: false
+    t.integer "midrank_id", null: false
+    t.integer "suprank_id", null: false
+    t.integer "botrank_id", null: false
     t.text "detail", null: false
+    t.string "teamname", null: false
     t.bigint "user_id", null: false
-    t.string "title", null: false
-    t.string "city", null: false
-    t.string "court", null: false
-    t.string "recruitment", null: false
-    t.datetime "datetime", null: false
+    t.integer "weekday_id", null: false
+    t.time "starttime", null: false
+    t.time "endtime", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_tweets_on_user_id"
@@ -31,6 +54,8 @@ ActiveRecord::Schema.define(version: 2020_11_03_194504) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
+    t.integer "position", null: false
+    t.integer "rank", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -40,5 +65,6 @@ ActiveRecord::Schema.define(version: 2020_11_03_194504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "tweets", "users"
 end
