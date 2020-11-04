@@ -82,3 +82,25 @@ a {
   opacity: 0.5;
 }
 
+
+/* tweetフォーム */
+
+.field{
+  margin: 10px 0;
+}
+
+.select-box {
+  margin: 2vh 0;
+}
+
+/* 一覧 */
+.team{
+  display: flex;
+  border: 1px solid black;
+  padding: 20px 40px;
+  margin-bottom: 28px;
+}
+
+.detail{
+
+}

@@ -1,2 +1,27 @@
-<h1>Tweets#index</h1>
-<p>Find me in app/views/tweets/index.html.erb</p>
+<% @tweets.each do |tweet|%>
+ <div class="team">
+  <%= image_tag "rank#{tweet.toprank_id}.png"%>
+  <%= image_tag "rank#{tweet.jgrank_id}.png"%>
+  <%= image_tag "rank#{tweet.midrank_id}.png"%>
+  <%= image_tag "rank#{tweet.suprank_id}.png"%>
+  <%= image_tag "rank#{tweet.botrank_id}.png"%>
+   <div class="detail">
+    <div calss="name">
+     チーム名　　: <%=tweet.teamname%>
+    </div>
+    <div calss="weekday">
+     活動日　　　: <%=tweet.weekday[:name]%>
+    </div>
+    <div class="time">
+     コアタイム　: <%=tweet.starttime.strftime("%H:%M")%> ~ <%=tweet.endtime.strftime("%H:%M")%>
+    </div>
+    <div class="comment">
+     詳細説明　　: <%=tweet.detail%>
+     </div>
+   </div>
+   
+
+ </div>
+
+
+<%end%>
